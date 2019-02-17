@@ -2,6 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
+const bodyParser = require('body-parser');
 
 const argv = require('./argv');
 const port = require('./port');
@@ -13,7 +14,34 @@ const ngrok =
     : false;
 const { resolve } = require('path');
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
+const profile = require('./routes/profile.route');
+app.use('/profiles', profile);
+
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://launchpartner:launch@launchpartnerprofiles-mhpw4.mongodb.net/test?retryWrites=trues";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("launch_test").collection("profiles");
+//  // perform actions on the collection object
+//  console.log(err)
+//  console.log(collection)
+//
+//   client.close();
+// });
+
+// Set up mongoose connection
+const mongoose = require('mongoose');
+// let dev_db_url = 'mongodb+srv://launchpartner:launch@launchpartnerprofiles-mhpw4.mongodb.net/admin';
+let dev_db_url = 'mongodb+srv://launchpartner:launch@launchpartnerprofiles-mhpw4.mongodb.net/test?retryWrites=true';
+let mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
@@ -54,3 +82,6 @@ app.listen(port, host, async err => {
     logger.appStarted(port, prettyHost);
   }
 });
+
+// username: launchpartner password: launch
+// login: chrisjackshay@gmail.com password: c10171991!
