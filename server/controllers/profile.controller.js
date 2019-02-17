@@ -5,6 +5,13 @@ exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
 
+exports.profile_index = function (req, res) {
+    Profile.find(null, function (err, profiles) {
+        if (err) return next(err);
+        res.send(profiles);
+    })
+};
+
 exports.profile_create = function (req, res) {
 
     let profile = new Profile(
