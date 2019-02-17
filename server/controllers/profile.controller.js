@@ -2,7 +2,8 @@ const Profile = require('../models/profile.model');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
-    res.send('Greetings from the Test controller!');
+    // res.send('Greetings from the Test controller!');
+    res.send(process.env.SECRET_KEY);
 };
 
 exports.profile_index = function (req, res) {

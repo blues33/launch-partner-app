@@ -13,6 +13,11 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import ProfileIndex from '../../components/ProfileIndex';
+// import io from 'socket.io-client'
+// import OAuth from '../../components/OAuth';
+
+// const socket = io('http://localhost:3000/profiles/signup')
+const providers = ['twitter', 'google', 'facebook', 'github']
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
@@ -25,3 +30,10 @@ export default class HomePage extends React.PureComponent {
     );
   }
 }
+// {providers.map(provider =>
+//   <OAuth
+//   provider={provider}
+//   key={provider}
+//   socket={socket}
+//   />
+// )}
