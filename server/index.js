@@ -7,13 +7,13 @@ require('dotenv').config()
 const path = require('path')
 const fs = require('fs')
 const https = require('https')
-const passport = require('passport')
-const session = require('express-session')
-const cors = require('cors')
-const socketio = require('socket.io')
-const authRouter = require('./auth.route.js')
-const passportInit = require('./passport.init')
-const { SESSION_SECRET, CLIENT_ORIGIN } = require('./config')
+// const passport = require('passport')
+// const session = require('express-session')
+// const cors = require('cors')
+// const socketio = require('socket.io')
+// const authRouter = require('./routes/auth.route.js')
+// const passportInit = require('./passport.init')
+// const { SESSION_SECRET, CLIENT_ORIGIN } = require('./config')
 
 const argv = require('./argv');
 const port = require('./port');
@@ -26,29 +26,29 @@ const ngrok =
 const { resolve } = require('path');
 const app = express();
 
-const directoryToServe = 'client';
+// const directoryToServe = 'client';
 
-const certOptions = {
-  key: fs.readFileSync(path.join(__dirname, 'ssl', 'ca.key')),
-  cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key'))
-};
+// const certOptions = {
+//   key: fs.readFileSync(path.join(__dirname, 'ssl', 'ca.key')),
+//   cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key'))
+// };
 
-const server = https.createServer(certOptions, app)
+// const server = https.createServer(certOptions, app)
 
-app.use(passport.initialize());
-passportInit();
-app.use(cors({
-  origin: CLIENT_ORIGIN
-}));
+// app.use(passport.initialize());
+// passportInit();
+// app.use(cors({
+//   origin: CLIENT_ORIGIN
+// }));
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true
-}))
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   resave: true,
+//   saveUninitialized: true
+// }))
 
-const io = socketio(server)
-app.set('io', io)
+// const io = socketio(server)
+// app.set('io', io)
 
 
 app.use(bodyParser.json());
@@ -56,7 +56,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 const profile = require('./routes/profile.route');
 app.use('/profiles', profile);
-app.use('/', authRouter)
+// app.use('/', authRouter)
 
 
 
@@ -104,7 +104,7 @@ app.get('*.js', (req, res, next) => {
 });
 
 // Start your app.
-server.listen(port, host, async err => {
+app.listen(port, host, async err => {
   if (err) {
     return logger.error(err.message);
   }
