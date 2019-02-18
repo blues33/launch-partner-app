@@ -3,7 +3,7 @@
 const express = require('express');
 const logger = require('./logger');
 const bodyParser = require('body-parser');
-require('dotenv').config()
+// require('dotenv').config()
 const path = require('path')
 const fs = require('fs')
 const https = require('https')
