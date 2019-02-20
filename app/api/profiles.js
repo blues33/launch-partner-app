@@ -4,8 +4,6 @@ export const fetchProfiles = () =>
   );
 
 export const createProfile = (userProfile) => {
-  // console.log(userProfile)
-
   return fetch('http://localhost:3000/profiles/create', {
     method: 'post',
     body: JSON.stringify({name: userProfile.username, description: userProfile.description}),
