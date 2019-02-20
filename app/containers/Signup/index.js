@@ -15,14 +15,16 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import Signupdiv from './Signupdiv';
 import SignupForm from '../../components/SignupForm';
+import { withRouter } from 'react-router-dom';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class Signup extends React.PureComponent {
   render() {
+    const SignupFormWithRouter = withRouter(SignupForm);
     return (
       <Signupdiv>
           <FormattedMessage {...messages.header} />
-          <SignupForm />
+          <SignupFormWithRouter />
       </Signupdiv>
     );
   }

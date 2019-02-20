@@ -1,5 +1,6 @@
 import React from 'react';
 import SignupSection from './SignupSection';
+import { createProfile } from '../api/profiles';
 
 class SignupForm extends React.Component{
 
@@ -7,7 +8,8 @@ class SignupForm extends React.Component{
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      description: ""
     };
 
     this.update = this.update.bind(this);
@@ -21,11 +23,18 @@ class SignupForm extends React.Component{
   handleSubmit(event) {
     event.preventDefault();
     const user = Object.assign({}, this.state);
-    console.log(this.state);
-    // this.props.processForm(user).then(() => this.props.router.push('/'));
+    const history = this.props.history;
+    // console.log(this.props)
+    createProfile(this.state).then(result => {
+      // this.props.updateUser(result);
+      history.push('/');
+    });
   }
 
   render() {
+    // const { match, location, history } = this.props
+
+
     return (
       <SignupSection>
         <form onSubmit={this.handleSubmit}>
@@ -36,12 +45,21 @@ class SignupForm extends React.Component{
                 placeholder="username"
                 onChange={this.update('username')} />
             </label>
+            
             <label>Password
               <input
                 type="password"
                 value={this.state.password}
                 placeholder="password"
                 onChange={this.update('password')} />
+            </label>
+
+            <label>Description
+              <input
+                type="text"
+                value={this.state.description}
+                placeholder="description"
+                onChange={this.update('description')} />
             </label>
             <input type="submit" value="Sign Up"/>
           </form>
