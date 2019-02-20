@@ -2,14 +2,13 @@ import React from 'react';
 import SignupSection from './SignupSection';
 import { createProfile } from '../api/profiles';
 
-class SignupForm extends React.Component{
-
+class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
-      description: ""
+      username: '',
+      password: '',
+      description: '',
     };
 
     this.update = this.update.bind(this);
@@ -34,35 +33,35 @@ class SignupForm extends React.Component{
   render() {
     // const { match, location, history } = this.props
 
-
     return (
       <SignupSection>
         <form onSubmit={this.handleSubmit}>
-            <label>Username
-              <input
-                type="text"
-                value={this.state.username}
-                placeholder="username"
-                onChange={this.update('username')} />
-            </label>
-            
-            <label>Password
-              <input
-                type="password"
-                value={this.state.password}
-                placeholder="password"
-                onChange={this.update('password')} />
-            </label>
+          <label>Username
+            <input
+              type="text"
+              value={this.state.username}
+              placeholder="username"
+              onChange={this.update('username')} />
+          </label>
 
-            <label>Description
-              <input
-                type="text"
-                value={this.state.description}
-                placeholder="description"
-                onChange={this.update('description')} />
-            </label>
-            <input type="submit" value="Sign Up"/>
-          </form>
+          <label>
+          <label>Password
+            <input
+              type="password"
+              value={this.state.password}
+              placeholder="password"
+              onChange={this.update('password')} />
+          </label>
+
+          <label>Description
+            <input
+              type="text"
+              value={this.state.description}
+              placeholder="description"
+              onChange={this.update('description')} />
+          </label>
+          <input type="submit" value="Sign Up"/>
+        </form>
       </SignupSection>
     );
   }

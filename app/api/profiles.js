@@ -1,15 +1,11 @@
+export const fetchProfiles = () =>
+  fetch('http://localhost:3000/profiles/index').then(response =>
+    response.json(),
+  );
 
-
-export const fetchProfiles = () => {
-  return fetch('http://localhost:3000/profiles/index').then(response => response.json());
-};
-
-export const createProfile = (userProfile) => {
+export const createProfile = userProfile =>
   // console.log(userProfile)
-  return fetch('http://localhost:3000/profiles/create', {
+  fetch('http://localhost:3000/profiles/create', {
     method: 'post',
-    body: JSON.stringify(userProfile)
-  }).then(function(response) {
-    return response.json();
-  });
-};
+    body: JSON.stringify(userProfile),
+  }).then(response => response.json());

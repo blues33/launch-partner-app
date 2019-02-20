@@ -10,12 +10,12 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 import messages from './messages';
 import Signupdiv from './Signupdiv';
 import SignupForm from '../../components/SignupForm';
-import { withRouter } from 'react-router-dom';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class Signup extends React.PureComponent {
@@ -23,8 +23,8 @@ export default class Signup extends React.PureComponent {
     const SignupFormWithRouter = withRouter(SignupForm);
     return (
       <Signupdiv>
-          <FormattedMessage {...messages.header} />
-          <SignupFormWithRouter />
+        <FormattedMessage {...messages.header} />
+        <SignupFormWithRouter />
       </Signupdiv>
     );
   }
