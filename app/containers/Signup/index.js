@@ -13,31 +13,20 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import ProfileIndex from '../../components/ProfileIndex';
-import Homediv from './Homediv';
+import Signupdiv from './Signupdiv';
 import SignupForm from '../../components/SignupForm';
-import SignupSection from '../../components/SignupSection';
-
-
-// import io from 'socket.io-client'
-// import OAuth from '../../components/OAuth';
-
-// const socket = io('http://localhost:3000/profiles/signup')
-// const providers = ['twitter', 'google', 'facebook', 'github']
 
 /* eslint-disable react/prefer-stateless-function */
-export default class HomePage extends React.PureComponent {
+export default class Signup extends React.PureComponent {
   render() {
     return (
-      <Homediv>
-          <Link to="/signup">Signup</Link>
+      <Signupdiv>
           <FormattedMessage {...messages.header} />
-          <ProfileIndex />
-      </Homediv>
+          <SignupForm />
+      </Signupdiv>
     );
   }
 }
-// <SignupForm />
 // {providers.map(provider =>
 //   <OAuth
 //   provider={provider}

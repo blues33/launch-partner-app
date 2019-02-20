@@ -1,4 +1,5 @@
 import React from 'react';
+import Li from './Li';
 
 export const ProfileItem = ({profile}) => {
   return (

@@ -1,12 +1,13 @@
 import React from 'react';
 import { ProfileItem } from './ProfileItem';
 import { fetchProfiles } from '../api/profiles';
+import Ul from './Ul';
 
 const ProfileItems = ({ profiles }) => {
   return (
-  <ul>
+  <Ul>
     { profiles.map(profile => <ProfileItem key={profile._id} profile={ profile }/>) }
-  </ul>
+  </Ul>
   );
 };
 

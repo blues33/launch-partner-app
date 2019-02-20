@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: lightgray;
+
   }
 
   body.fontLoaded {
@@ -16,11 +18,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
   }
-
   p,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
