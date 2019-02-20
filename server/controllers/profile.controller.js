@@ -26,7 +26,6 @@ exports.profile_create = function (req, res, next) {
         if (err) {
             return next(err);
         }
-        console.log('did we get here')
         res.send('Profile Created successfully')
     })
 };
