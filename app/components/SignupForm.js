@@ -43,8 +43,7 @@ class SignupForm extends React.Component {
               placeholder="username"
               onChange={this.update('username')} />
           </label>
-
-          <label>
+          
           <label>Password
             <input
               type="password"
