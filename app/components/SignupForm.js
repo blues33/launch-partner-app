@@ -26,6 +26,8 @@ class SignupForm extends React.Component {
     // console.log(this.props)
     createProfile(this.state).then(result => {
       // this.props.updateUser(result);
+      console.log('printing result of create profile request')
+      console.log(result)
       history.push('/');
     });
   }
@@ -43,7 +45,7 @@ class SignupForm extends React.Component {
               placeholder="username"
               onChange={this.update('username')} />
           </label>
-          
+
           <label>Password
             <input
               type="password"

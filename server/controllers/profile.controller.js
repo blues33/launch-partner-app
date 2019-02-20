@@ -6,15 +6,15 @@ exports.test = function (req, res) {
     res.send(process.env.SECRET_KEY);
 };
 
-exports.profile_index = function (req, res) {
+exports.profile_index = function (req, res, next) {
     Profile.find(null, function (err, profiles) {
         if (err) return next(err);
         res.send(profiles);
     })
 };
 
-exports.profile_create = function (req, res) {
-
+exports.profile_create = function (req, res, next) {
+    console.log(req.body)
     let profile = new Profile(
         {
             name: req.body.name,
@@ -26,6 +26,7 @@ exports.profile_create = function (req, res) {
         if (err) {
             return next(err);
         }
+        console.log('did we get here')
         res.send('Profile Created successfully')
     })
 };

@@ -3,9 +3,12 @@ export const fetchProfiles = () =>
     response.json(),
   );
 
-export const createProfile = userProfile =>
+export const createProfile = (userProfile) => {
   // console.log(userProfile)
-  fetch('http://localhost:3000/profiles/create', {
+
+  return fetch('http://localhost:3000/profiles/create', {
     method: 'post',
-    body: JSON.stringify(userProfile),
-  }).then(response => response.json());
+    body: JSON.stringify({name: userProfile.username, description: userProfile.description}),
+    headers: { "Content-Type": "application/json" }
+  })
+}
